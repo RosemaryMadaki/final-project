@@ -116,3 +116,77 @@ tbl_uvregression(
 							Sex, Site),
 	method = lm)
 
+#Step5 #Quoting something from the table,the code below is tentative
+inline_text(income_table, variable = "age_bir")
+
+#Step 6 Trying figure
+
+library(ggplot2)
+tidy(logistic_model, conf.int = TRUE, exponentiate = TRUE) |>
+	tidycat::tidy_categorical(logistic_model, exponentiate = TRUE) |>
+	dplyr::slice(-1) |> # remove intercept
+	ggplot(mapping = aes(x = level, y = estimate,
+											 ymin = conf.low, ymax = conf.high)) +
+	geom_point() +
+	geom_errorbar() +
+	facet_grid(cols = vars(variable), scales = "free", space = "free") +
+	scale_y_log10()
+
+#Step7 Figure
+
+install.packages("ggplot2")
+install.packages("readr")
+install.packages("dplyr")
+library(ggplot2)
+library(readr)
+library(dplyr)
+
+#Creating a new dataframe for my histogram
+
+home_data <- read_csv(
+	"https://raw.githubusercontent.com/rashida048/Datasets/master/home_data.csv",
+	col_select = c(price, condition)
+)
+
+sodium3 <- read_csv(here::here("mdata", "sosonew.csv"))
+
+
+ggplot(data = home_data, aes(x = price)) +
+	geom_histogram()
+
+#Histogram of Blood pressure
+ggplot(data = sodium3, aes(x = BP)) +
+	geom_histogram()
+
+ggplot(data = sodium3, aes(x = Sodium)) +
+	geom_histogram()
+
+#Summarizing a stat for the histogram
+price_stats <- home_data |>
+	summarize(mean_price = mean(price))
+price_stats
+
+#summary stat i created
+price_stats <- sodium3 |>
+	summarize(mean_BP = mean(BP))
+price_stats
+
+#Applying the summary stat
+ggplot(home_data, aes(x = price)) +
+	geom_histogram() +
+	geom_vline(aes(xintercept = mean_price), price_stats, color = "red", linewidth = 2)
+
+
+#Applying some edits to my histogram
+ggplot(sodium3, aes(x = BP)) +
+	geom_histogram() +
+	geom_vline(aes(xintercept = mean_BP), price_stats, color = "red", linewidth = 2)
+
+
+#Anoda colour to histogram
+ggplot(sodium3, aes(x = BP)) +
+	geom_histogram() +
+	geom_vline(aes(xintercept = mean_BP), price_stats, color = "blue", linewidth = 6)
+
+
+
