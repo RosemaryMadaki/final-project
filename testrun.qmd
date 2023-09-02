@@ -3,7 +3,7 @@ title: "Rose_fproject"
 author: "Rosemary Madaki"
 format: html
 editor: visual
-theme: flatly
+theme: pulse
 execute: 
   eval: true
   echo: false
