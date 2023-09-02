@@ -3,13 +3,26 @@ title: "Rose_fproject"
 author: "Rosemary Madaki"
 format: html
 editor: visual
+theme: flatly
 ---
 
-## Quarto
+## Background
 
-Quarto enables you to weave together content and executable code into a finished document. To learn more about Quarto see <https://quarto.org>.
+This is a brief report on a research conducted on assessing the relationship between salt consumption and blood pressure. This data was graciously donated by the Department of Biostatistics, Ahmadu Bello University, Zaria.
 
-## Running Code
+## Results
+
+```{r}
+
+```
+
+```{r}
+
+```
+
+```{r}
+
+```
 
 When you click the **Render** button a document will be generated that includes both content and the output of embedded code. You can embed code like this:
 
@@ -26,3 +39,17 @@ You can add options to executable code like this
 ```
 
 The `echo: false` option disables the printing of code (only output is displayed).
+
+Some more chunks
+
+```{r}
+2+5
+```
+
+MORE CHUNKS
+
+```{r}
+#| echo: false
+#| eval: true
+3
+```
