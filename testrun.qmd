@@ -8,7 +8,7 @@ theme: flatly
 
 ## Background
 
-This is a brief report on a research conducted on assessing the relationship between salt consumption and blood pressure. This data was graciously donated by the Department of Biostatistics, Ahmadu Bello University, Zaria.
+This is a brief report on a research conducted on assessing the relationship between salt consumption and blood pressure among 12 students. This data was graciously donated by the Department of Biostatistics, Ahmadu Bello University, Zaria.
 
 ## Results
 
@@ -17,9 +17,16 @@ This is a brief report on a research conducted on assessing the relationship bet
 #| message: false
 library(tidyverse)
 library(gtsummary)
+library(ggplot2)
+library(readr)
+library(dplyr)
+
 #Loading my dataset
 #Step2 loading my A NEW dataset, the step below worked
 sosonew <- read_csv(here::here("mdata", "sosonew.csv"))
+
+
+
 
 ```
 
@@ -63,23 +70,23 @@ table2<-tbl_uvregression(
 							Sex, Site),
 	method = lm)
 table2
+
 ```
-@tbl-two is a table showing some summary statistics.
+@tbl-two is a table showing some regression analysis.
 
 
-When you click the **Render** button a document will be generated that includes both content and the output of embedded code. You can embed code like this:
+
 
 ```{r}
-1 + 1
+#| label: fig-hist
+#| fig-cap: "This is a histogram"
+fig1<-ggplot(data = sosonew, aes(x = BP)) +
+	geom_histogram(binwidth = 20)
+fig1
+
+
 ```
-
-You can add options to executable code like this
-
-```{r}
-#| echo: false
-
-2 * 2
-```
+@fig-hist is a histogram displaying the range of blood pressure.
 
 The `echo: false` option disables the printing of code (only output is displayed).
 
