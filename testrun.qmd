@@ -4,6 +4,9 @@ author: "Rosemary Madaki"
 format: html
 editor: visual
 theme: flatly
+execute: 
+  eval: true
+  echo: false
 ---
 
 ## Background
@@ -44,17 +47,17 @@ table1<-tbl_summary(
 	missing_text = "Missing")
 table1
 
-#my code
 inline_text(table1, variable = "Site", level = "BRK",
                          column = "M")
 inline_text(table1, variable = "Site", level = "ATL",
                          column = "M")
-#creating a factor to be referred to
+
 
 male_b<-inline_text(table1, variable = "Site", level = "BRK",
                          column = "M")
 male_a<-inline_text(table1, variable = "Site", level = "ATL",
                          column = "M")
+#| message: false
 ```
 
 @tbl-descr is a table. As seen above, there were more males in Brooklyn (`r male_b`) than Atlanta (`r male_a`) .
@@ -85,10 +88,9 @@ fig1
 ```
 
 @fig-hist is a histogram displaying the range of blood pressure.
-```{r}
-#| echo: false
-#| message: false
-renv::status()
-renv::snapshot()
-```
+
+## Conclusion
+The analysis revealed a significant association between sex and blood pressure.
+
+
 
