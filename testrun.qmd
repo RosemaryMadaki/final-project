@@ -24,38 +24,47 @@ sosonew <- read_csv(here::here("mdata", "sosonew.csv"))
 ```
 
 ```{r}
-#Step 3 Creating Table 1, descriptive statistics table
+#| label: tbl-descr
+#| tbl-cap: "Descriptive Statistics of Data"
+table1<-tbl_summary(
+	sosonew,
+	by = Sex,
+	include = c(BP, Site),
+	label = list(
+		BP ~ "Blood Pressure",
+		Site ~ "Location"
+	),
+	missing_text = "Missing")
+table1
+#sample code
+
 #my code
-#| label: tbl-descr
-#| tbl-cap: "Descriptive Statistics of Data"
-table1<-tbl_summary(
-	sosonew,
-	by = Sex,
-	include = c(BP, Site),
-	label = list(
-		BP ~ "Blood Pressure",
-		Site ~ "Location"
-	),
-	missing_text = "Missing")
-table1
+inline_text(table1, variable = "Site", level = "BRK",
+                         column = "M")
+inline_text(table1, variable = "Site", level = "ATL",
+                         column = "M")
+#creating a factor to be referred to
+
+male_b<-inline_text(table1, variable = "Site", level = "BRK",
+                         column = "M")
+male_a<-inline_text(table1, variable = "Site", level = "ATL",
+                         column = "M")
 ```
-@tbl-descr is a table showing some summary statistics. 
+@tbl-descr is a table. As seen above, there were more males in Brooklyn (`r male_b`) than Atlanta (`r male_a`) .
+
+Improve the next chunk for the regression table
 ```{r}
-#| label: tbl-descr
-#| tbl-cap: "Descriptive Statistics of Data"
-table1<-tbl_summary(
+#| label: tbl-two
+#| tbl-cap: "Linear Regression of Data"
+table2<-tbl_uvregression(
 	sosonew,
-	by = Sex,
-	include = c(BP, Site),
-	label = list(
-		BP ~ "Blood Pressure",
-		Site ~ "Location"
-	),
-	missing_text = "Missing")
-table1
-#created Table 1
+	y = Sodium,
+	include = c(BP, Patient,
+							Sex, Site),
+	method = lm)
+table2
 ```
-@tbl-descr is a table showing some summary statistics.
+@tbl-two is a table showing some summary statistics.
 
 
 When you click the **Render** button a document will be generated that includes both content and the output of embedded code. You can embed code like this:
