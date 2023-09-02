@@ -25,12 +25,38 @@ sosonew <- read_csv(here::here("mdata", "sosonew.csv"))
 
 ```{r}
 #Step 3 Creating Table 1, descriptive statistics table
-
+#my code
+#| label: tbl-descr
+#| tbl-cap: "Descriptive Statistics of Data"
+table1<-tbl_summary(
+	sosonew,
+	by = Sex,
+	include = c(BP, Site),
+	label = list(
+		BP ~ "Blood Pressure",
+		Site ~ "Location"
+	),
+	missing_text = "Missing")
+table1
 ```
-
+@tbl-descr is a table showing some summary statistics. 
 ```{r}
-
+#| label: tbl-descr
+#| tbl-cap: "Descriptive Statistics of Data"
+table1<-tbl_summary(
+	sosonew,
+	by = Sex,
+	include = c(BP, Site),
+	label = list(
+		BP ~ "Blood Pressure",
+		Site ~ "Location"
+	),
+	missing_text = "Missing")
+table1
+#created Table 1
 ```
+@tbl-descr is a table showing some summary statistics.
+
 
 When you click the **Render** button a document will be generated that includes both content and the output of embedded code. You can embed code like this:
 
