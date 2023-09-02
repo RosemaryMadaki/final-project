@@ -43,7 +43,6 @@ table1<-tbl_summary(
 	),
 	missing_text = "Missing")
 table1
-#sample code
 
 #my code
 inline_text(table1, variable = "Site", level = "BRK",
@@ -57,9 +56,9 @@ male_b<-inline_text(table1, variable = "Site", level = "BRK",
 male_a<-inline_text(table1, variable = "Site", level = "ATL",
                          column = "M")
 ```
+
 @tbl-descr is a table. As seen above, there were more males in Brooklyn (`r male_b`) than Atlanta (`r male_a`) .
 
-Improve the next chunk for the regression table
 ```{r}
 #| label: tbl-two
 #| tbl-cap: "Linear Regression of Data"
@@ -72,10 +71,8 @@ table2<-tbl_uvregression(
 table2
 
 ```
+
 @tbl-two is a table showing some regression analysis.
-
-
-
 
 ```{r}
 #| label: fig-hist
@@ -86,20 +83,12 @@ fig1
 
 
 ```
+
 @fig-hist is a histogram displaying the range of blood pressure.
-
-The `echo: false` option disables the printing of code (only output is displayed).
-
-Some more chunks
-
-```{r}
-2+5
-```
-
-MORE CHUNKS
-
 ```{r}
 #| echo: false
-#| eval: true
-3
+#| message: false
+renv::status()
+renv::snapshot()
 ```
+
