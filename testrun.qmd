@@ -13,10 +13,18 @@ This is a brief report on a research conducted on assessing the relationship bet
 ## Results
 
 ```{r}
+#| echo: false
+#| message: false
+library(tidyverse)
+library(gtsummary)
+#Loading my dataset
+#Step2 loading my A NEW dataset, the step below worked
+sosonew <- read_csv(here::here("mdata", "sosonew.csv"))
 
 ```
 
 ```{r}
+#Step 3 Creating Table 1, descriptive statistics table
 
 ```
 
