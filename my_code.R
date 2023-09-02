@@ -143,30 +143,37 @@ library(dplyr)
 
 #Creating a new dataframe for my histogram
 
+#Sample code
 home_data <- read_csv(
 	"https://raw.githubusercontent.com/rashida048/Datasets/master/home_data.csv",
 	col_select = c(price, condition)
 )
 
+# 7A PROPER Creating a new dataframe for my histogram
 sodium3 <- read_csv(here::here("mdata", "sosonew.csv"))
 
+#7B CREATING HISTOGRAM
+#Sample code for histogram
 
 ggplot(data = home_data, aes(x = price)) +
 	geom_histogram()
 
-#Histogram of Blood pressure
+#7B Simple Histogram of Blood pressure
 ggplot(data = sodium3, aes(x = BP)) +
 	geom_histogram()
 
 ggplot(data = sodium3, aes(x = Sodium)) +
 	geom_histogram()
 
-#Summarizing a stat for the histogram
+
+#7C Anoda Histogram of Blood pressure with more features
+
+#Summarizing a stat for the histogram sample code
 price_stats <- home_data |>
 	summarize(mean_price = mean(price))
 price_stats
 
-#summary stat i created
+#7Ci summary stat i created
 price_stats <- sodium3 |>
 	summarize(mean_BP = mean(BP))
 price_stats
@@ -177,16 +184,18 @@ ggplot(home_data, aes(x = price)) +
 	geom_vline(aes(xintercept = mean_price), price_stats, color = "red", linewidth = 2)
 
 
-#Applying some edits to my histogram
+#7Cii Applying some edits to my histogram use this or 7Ciii
 ggplot(sodium3, aes(x = BP)) +
 	geom_histogram() +
 	geom_vline(aes(xintercept = mean_BP), price_stats, color = "red", linewidth = 2)
 
 
-#Anoda colour to histogram
+#7Ciii Anoda colour to histogram
 ggplot(sodium3, aes(x = BP)) +
 	geom_histogram() +
 	geom_vline(aes(xintercept = mean_BP), price_stats, color = "blue", linewidth = 6)
 
+#8 Applying renv
+kkkkk
 
 
