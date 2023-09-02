@@ -1,30 +1,9 @@
 #Here you will find my codes.
 
+#PLEASE NOTE: the quarto file contains extra codes not specified here
+
 #reading in my data
 
-#Step1 loaded the package tidyverse in order to use the readcsv option
-library(tidyverse)
-
-#Step2 loading my data, the step below worked
-sodium <- read_csv(here::here("mdata", "sodium.csv"))
-
-#Step 3 Creating Table 1, descriptive statistics table
-#Step 3a, load gtsummary package
-
-library(gtsummary)
-
-# tbl_summary(
-	#nlsy,
-	#by = sex_cat,
-	#include = c(sex_cat, race_eth_cat, region_cat,
-							#eyesight_cat, glasses, age_bir))
-
-#Step 3b, try the code for the table below
-
-tbl_summary(
-	sodium,
-	by = Patient,
-	include = c(Sodium, BP))
 
 #BEGIN HERE!!!!!
 #Step1 loaded the package tidyverse in order to use the readcsv option
@@ -68,9 +47,9 @@ tbl_uvregression(
 
 #Step7 Figure
 #Some of the packages used
-install.packages("ggplot2")
-install.packages("readr")
-install.packages("dplyr")
+#install.packages("ggplot2")
+#install.packages("readr")
+#install.packages("dplyr")
 library(ggplot2)
 library(readr)
 library(dplyr)
@@ -79,8 +58,9 @@ library(dplyr)
 
 #7B CREATING HISTOGRAM
 #7B Simple Histogram of Blood pressure
-ggplot(data = sosonew, aes(x = BP)) +
-	geom_histogram()
+fig1<-ggplot(data = sosonew, aes(x = BP)) +
+	geom_histogram(binwidth = 20)
+fig1
 
 
 
